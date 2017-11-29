@@ -1,0 +1,21 @@
+<ion-view title="Meus agendamentos" id="agendamentos">
+    <ion-content padding="true" class="has-header">
+      <div class="row timeline" ng-repeat="agendamento in agendamentos">
+        <div class="data col-20">
+          <div class="dia">{{agendamento.dia}}</div>
+          <div class="mes">{{agendamento.mes}}</div>
+          <div class="hora">{{agendamento.hora}}</div>
+        </div>
+        <div class="col-80">
+          <div class="card">
+            <div class="item item-text-wrap">
+              <span class="badge" ng-class="'badge-'+agendamento.classe">{{agendamento.status}}</span>
+              <big ng-bind-html="agendamento.esp_nome"></big>
+              <p><i class="ion-person"></i> {{agendamento.usr_nome}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if="agendamentos.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você não possui nenhum agendamento.</div></div>
+    </ion-content>
+</ion-view>

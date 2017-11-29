@@ -1,0 +1,14 @@
+<ion-view title="Escolha um horário" id="horarios-agendar-consulta">
+    <ion-content padding="true" class="has-header">
+      <div class="card"><div class="item item-text-wrap"><i class="icon ion-information-circled"></i> Horários livres para o dia 12/01/2017</div></div>
+      <ion-list>
+        <div class="item item-divider">Manhã</div>
+        <div class="item" ui-sref="meusAgendamentos">9:00</div>
+        <div class="item" ui-sref="meusAgendamentos">11:00</div>
+        <div class="item item-divider">Tarde</div>
+        <div class="item" ui-sref="meusAgendamentos">13:30</div>
+        <div class="item" ui-sref="meusAgendamentos">14:45</div>
+        <div class="item" ui-sref="meusAgendamentos">18:20</div>
+      </ion-list>
+    </ion-content>
+</ion-view>

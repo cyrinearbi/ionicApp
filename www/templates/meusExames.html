@@ -1,0 +1,11 @@
+<ion-view title="Meus exames" id="exames">
+    <ion-content padding="true" class="has-header">
+      <div class="list">
+        <a ui-sref="exames({id:exame.age_codigo})" class="item item-button-right" ng-repeat="exame in exames">{{exame.data}}
+          <span class="badge" ng-class="'badge-'+exame.classe">{{exame.status}}</span>
+          <button class="button button-positive ion-arrow-right-b"></button>
+        </a>
+      </div>
+      <div ng-if="exames.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você não possui nenhum exame.</div></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,13 @@
+<ion-view title="Minhas receitas" id="receitas">
+    <ion-content padding="true" class="has-header">
+      <div class="card" ng-repeat="receita in receitas">
+        <div class="item item-divider"><strong>Receita #{{receita.rec_codigo}} <span class="receita-data">{{receita.rec_data}}</span></strong></div>
+        <div class="item item-text-wrap" ng-repeat="item in receita.itens">
+            <strong>{{item.irec_quantidade}}</strong> {{item.pro_nome}}<br>
+            <span ng-bind-html="item.irec_recomendacao"></span>
+        </div>
+        <div class="item item-divider item-text-wrap"><small>Válida até {{receita.rec_validade}}</small><br><strong>{{receita.usr_nome}}</strong></div>
+      </div>
+      <div ng-if="receitas.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você não tem nenhuma receita.</div></div>
+    </ion-content>
+</ion-view>

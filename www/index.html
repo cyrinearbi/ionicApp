@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"> -->
+    <meta http-equiv="Content-Security-Policy" content="img-src * 'self' data:; default-src * 'self' gap: wss: ws: ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+    
+    <title></title>
+
+    
+    
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/ngMask.min.js"></script>
+    <script src="js/ng-cordova.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    
+    <link href="css/ionic.app.css" rel="stylesheet">
+    
+
+    <style type="text/css">
+      .platform-ios .manual-ios-statusbar-padding{
+        padding-top:20px;
+      }
+      .manual-remove-top-padding{
+        padding-top:0px; 
+      }
+      .manual-remove-top-padding .scroll{
+        padding-top:0px !important;
+      }
+      ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+        margin-left:-10px;
+        margin-right:-10px;
+      }
+      ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+        border-radius:0px;
+        border-left:0px;
+        border-right: 0px;
+      }
+    </style>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/routes.js"></script>
+    
+     
+    <script src="js/directives.js"></script>
+     
+    <script src="js/services.js"></script>
+    <script src="js/openfb.js"></script>
+    <script src="js/ngopenfb.js"></script>
+    <script src="js/angular-md5.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOSLd2zs44XK4tQ31iaLnm_cbBVDQPpHU"></script>
+
+    <!-- Only required for Tab projects w/ pages in multiple tabs 
+    <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+    -->
+
+  </head>
+  <body ng-app="app" animation="slide-left-right-ios7">
+  <ion-side-menus enable-menu-with-back-views="true" data-componentid="side-menu">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-calm">
+          <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon button-dark" menu-toggle="left"></button>
+          </ion-nav-buttons>
+          <ion-nav-buttons side="right">
+            <button class="button button-clear icon-left ion-chevron-left button-dark" ng-if="$root.mostraVoltar == true" ng-click="$root.voltar()">Voltar</button>
+            <a class="button button-clear icon-left ion-chevron-left button-dark" ng-if="$root.mostraVoltar == 'url' && $root.voltar.length > 0" ng-href="{{$root.voltar}}">Voltar</a>
+          </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" id="side-menu">
+        <ion-header-bar class="bar-calm">
+            <div class="title">Menu</div>
+        </ion-header-bar>
+        <ion-content padding="false" class="side-menu-left has-header">
+            <ion-list id="menu-null">
+                <ion-item class="item-icon-left" ui-sref="login" menu-close="" ng-if="!$root.user.hasOwnProperty('uapp_codigo')">Entrar
+                    <i class="icon ion-person"></i>{{$root.user.length}}
+                </ion-item>
+                <ion-item class="item-icon-left" ui-sref="cadastro" menu-close="" ng-if="!$root.user.hasOwnProperty('uapp_codigo')">Cadastrar
+                    <i class="icon ion-person-add"></i>
+                </ion-item>
+                <ion-item class="item-icon-left" ui-sref="cartaoSus" menu-close="" ng-if="!$root.user.hasOwnProperty('usu_cartao_sus') && $root.user.hasOwnProperty('uapp_codigo')">Cartão SUS
+                    <i class="icon ion-person"></i>
+                </ion-item>
+                <!-- <ion-item class="item-icon-left" ui-sref="meusDados" menu-close="" ng-if="$root.user.usu_cartao_sus">Meus dados
+                    <i class="icon ion-person"></i>
+                </ion-item> -->
+                <ion-list ng-if="$root.user.usu_cartao_sus" ui-sref="meusDados" menu-close="">
+                    <ion-item class="item-thumbnail-left dark item-text-wrap">
+                        <img ng-src="{{$root.user.uapp_fbid ? 'http://graph.facebook.com/'+$root.user.uapp_fbid+'/picture?type=normal' : 'img/perfil.png'}}">
+                        <h2>{{$root.user.uapp_nome}}</h2>
+                        <button class="button button-small button-positive">Meus dados</button>
+                    </ion-item>
+                </ion-list>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="meusAgendamentos" menu-close="" ng-if="$root.user.usu_cartao_sus">Meus agendamentos
+                    <i class="icon ico-calendar"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="meusExames" menu-close="" ng-if="$root.user.usu_cartao_sus">Meus exames
+                    <i class="icon ico-heart-line"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="medicamentos" menu-close="" ng-if="$root.user.usu_cartao_sus">Medicamentos
+                    <i class="icon ico-pill"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="prontuario" menu-close="" ng-if="$root.user.usu_cartao_sus">Prontuário
+                    <i class="icon ion-clipboard"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="minhasReceitas" menu-close="" ng-if="$root.user.usu_cartao_sus">Minhas receitas
+                    <i class="icon ico-prescription"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="meusAtestados" menu-close="" ng-if="$root.user.usu_cartao_sus">Meus atestados
+                    <i class="icon ico-single-bed"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="minhasVacinas" menu-close="" ng-if="$root.user.usu_cartao_sus">Minhas vacinas
+                    <i class="icon ico-syringe"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="unidadesProximas" menu-close="">Unidades próximas
+                    <i class="icon ion-location"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="economiasEmSaude" menu-close="" ng-if="$root.user.usu_cartao_sus">Economias em saúde
+                    <i class="icon ion-social-usd"></i>
+                </ion-item>
+                <ion-item class="item-icon-left item-text-wrap" ui-sref="contatosDeEmergencia" menu-close="">Contatos de emergência
+                    <i class="icon ion-alert-circled"></i>
+                </ion-item>
+                <ion-item class="item-icon-left" ng-if="$root.user.usu_cartao_sus" ui-sref="agendarConsulta" menu-close="">Agendar consulta
+                    <i class="icon ico-calendar-clock"></i>
+                </ion-item>
+                <ion-item class="item-icon-left" ng-if="$root.user.usu_cartao_sus" ui-sref="confirmarConsulta" menu-close="">Confirmar consulta
+                    <i class="icon ico-calendar-check"></i>
+                </ion-item>
+                <ion-item class="item-icon-left" ng-click="$root.sair()" ng-if="$root.user.hasOwnProperty('uapp_codigo')">
+                    <i class="icon ion-log-out"></i>Sair
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
+  </body>
+</html>

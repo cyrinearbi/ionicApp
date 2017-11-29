@@ -1,0 +1,46 @@
+<ion-view title="Pré-Consultas" id="consultas">
+    <ion-content padding="true" class="has-header">
+      <div class="card consulta" ng-repeat="consulta in consultas">
+        <div class="item item-divider">{{consulta.age_data}}<span class="badge" ng-class="'badge-'+consulta.classe">{{consulta.pc_clas_risco}}</span></div>
+        <div class="item item-text-wrap">
+          <h2>{{consulta.usr_nome_enf}}</h2>
+          <p ng-bind-html="consulta.esp_nome"></p>
+        </div>
+        <div class="item item-text-wrap" ng-if="consulta.pc_dados.length > 0">
+          <p ng-if="consulta.pc_dados.length > 0" ng-bind-html="consulta.pc_dados"></p>
+        </div>
+        <div class="item item-text-wrap">
+          <div class="row">
+            <div class="col">Temp.</div>
+            <div class="col">Peso</div>
+            <div class="col">Alt.</div>
+            <div class="col">P/A</div>
+            <div class="col">IMC</div>
+          </div>
+          <div class="row valor">
+            <div class="col">{{consulta.pc_temperatura || '--'}}</div>
+            <div class="col">{{consulta.pc_peso || '--'}}</div>
+            <div class="col">{{consulta.pc_altura || '--'}}</div>
+            <div class="col">{{consulta.pc_pressao_sistolica || '--'}}/{{consulta.pc_pressao_diastolica || '--'}}</div>
+            <div class="col">{{consulta.imc || '--'}}</div>
+          </div>
+          <div class="row">
+            <div class="col">Card.</div>
+            <div class="col">Resp.</div>
+            <div class="col">Peri.</div>
+            <div class="col">Glic.</div>
+            <div class="col">Satu.</div>
+          </div>
+          <div class="row valor">
+            <div class="col">{{consulta.pc_freq_cardiaca || '--'}}</div>
+            <div class="col">{{consulta.pc_freq_respiratoria || '--'}}</div>
+            <div class="col">{{consulta.pc_perimetro_cefalico || '--'}}</div>
+            <div class="col">{{consulta.pc_glicose || '--'}}</div>
+            <div class="col">{{consulta.pc_saturacao || '--'}}</div>
+          </div>
+        </div>
+        <div class="item item-divider item-text-wrap"><small>{{consulta.uni_desc}}</small></div>
+      </div>
+      <div ng-if="consultas.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você ainda não realizou nenhuma consulta.</div></div>
+    </ion-content>
+</ion-view>

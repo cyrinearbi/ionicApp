@@ -1,0 +1,7 @@
+<ion-view title="Escolha uma cidade">
+    <ion-content padding="true" class="has-header">
+      <ion-list>
+        <ion-radio ng-repeat="(n, cidade) in cidades" ng-model="campos.cidade" ng-value="n" ng-change="escolheCidade()">{{cidade}}</ion-radio>
+      </ion-list>
+    </ion-content>
+</ion-view>

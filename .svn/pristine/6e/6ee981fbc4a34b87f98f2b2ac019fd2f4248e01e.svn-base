@@ -1,0 +1,12 @@
+<ion-view title="Contatos de emergência" id="contatos">
+    <ion-content padding="true" class="has-header">
+      <div class="list">
+        <a class="item item-text-wrap" ng-repeat="(numero, contato) in contatos" ng-href="tel:{{numero}}">
+          <div class="row">
+            <div class="col">{{contato}}</div>
+            <div class="col col-33"><span>{{numero}}</span></div>
+          </div>
+        </a>
+      </div>
+    </ion-content>
+</ion-view>

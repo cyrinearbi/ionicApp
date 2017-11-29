@@ -1,0 +1,16 @@
+<ion-view title="Detalhes da vacina" id="vacina">
+    <ion-content padding="true" class="has-header">
+      <div class="card">
+        <div class="item item-divider"><strong>{{vacina.vac_dose}}&ordf; Dose de </strong>{{vacina.pro_nome}}</div>
+        <div class="item item-text-wrap">
+          <div><strong>Ação: </strong> <span ng-class="vacina.classe">{{vacina.acao}}</span></div>
+          <div ng-if="vacina.dose != 6"><strong>Data: </strong>{{vacina.data}}</div>
+          <div ng-if="vacina.reforco == 'S' && vacina.dose == 6">REFORÇO: {{vacina.data}}</div>
+          <div ng-if="vacina.vac_acao == 'A'"><strong>Lote: </strong>{{vacina.lote}}</div>
+          <div ng-if="vacina.vac_acao == 'A'"><strong>Validade: </strong>{{vacina.validade}}</div>
+          <div><strong>Profissional: </strong>{{vacina.usr_nome}}</div>
+          <div><strong>Unidade: </strong>{{vacina.uni_desc}}</div>
+        </div>
+      </div>
+    </ion-content>
+</ion-view>

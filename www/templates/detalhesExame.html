@@ -1,0 +1,28 @@
+<ion-view title="Detalhes do exame" id="detalhes-exame">
+    <ion-content padding="false " class="has-header">
+      <div ng-if="exame.proc_nome.length > 0" class="card">
+        <div class="item item-divider">{{exame.proc_nome}}</div>
+        <div class="item item-text-wrap">
+          <b>Material:</b> {{exame.material}}<br>
+          <b>Método:</b> <span ng-bind-html="exame.metodo"></span><br>
+          <b>Data coleta:</b> {{exame.col_data_coleta | date:'dd/MM/yyyy'}}
+          <div class="laudo" ng-repeat="laudo in exame.laudos" ng-class="{primeiro:$index == 0}">
+            <div class="laudo-titulo" ng-if="exame.laudos[$index-1].sex_codigo != laudo.sex_codigo">{{laudo.sex_subexame}}</div>
+            <div class="row laudo-item">
+              <div class="col">{{laudo.ite_itemdoexame}}</div>
+              <div ng-if="$index == 0" class="col" id="laudo-vlr-ref">VALOR DE REFERÊNCIA</div>
+            </div>
+            <div class="row laudo-vlr">
+              <div class="col" ng-bind-html="laudo.vlr_valor+laudo.ite_tipo_medida"></div>
+              <div class="col laudo-vlr-ref" ng-bind-html="laudo.vlr_valordereferencia+' '+laudo.ite_tipo_medida"></div>
+            </div>
+          </div>
+        </div>
+        <div class="item item-divider item-text-wrap" ng-if="exame.laudos[0].res_observacao.length > 0">
+          <div id="laudo-obs">OBSERVAÇÕES:</div>
+          <div ng-bind-html="exame.laudos[0].res_observacao"></div>
+        </div>
+      </div>
+      <div ng-if="exame.laudo.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> O exame não possui resultado.</div></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,12 @@
+<ion-view title="Prontuário" id="prontuario">
+    <ion-content padding="true" class="has-header">
+      <div class="list">
+        <a ui-sref="alertas" class="item item-button-left">Alertas<button class="button button-positive ion-alert-circled"></button></a>
+        <a ui-sref="consultas" class="item item-button-left">Consultas<button class="button button-positive ion-clipboard"></button></a>
+        <a ui-sref="preConsultas" class="item item-button-left">Pré-Consultas<button class="button button-positive ion-android-clipboard"></button></a>
+        <a ui-sref="procedimentos" class="item item-button-left">Procedimentos<button class="button button-positive ion-medkit"></button></a>
+        <a ui-sref="internacoes" class="item item-button-left">Internações<button class="button button-positive ion-tshirt"></button></a>
+        <a ui-sref="atividadesColetivas" class="item item-button-left">Atividades coletivas<button class="button button-positive ion-ios-people"></button></a>
+      </div>
+    </ion-content>
+</ion-view>

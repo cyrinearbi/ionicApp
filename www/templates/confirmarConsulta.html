@@ -1,0 +1,18 @@
+<ion-view title="Confirmar consulta" id="page13">
+    <ion-content padding="true" class="has-header">
+      <div class="card">
+        <div class="item item-divider">Confirmar consulta</div>
+        <div class="item item-text-wrap">
+          <p><i class="icon ico-calendar"></i> 12/01/2017</p>
+          <p><i class="icon ion-android-time"></i> 13:30</p>
+          <p><i class="icon ico-{{icone}}"></i> {{especialidade}}</p>
+        </div>
+        <div class="item item-text-wrap">Você confirma o agendamento nessa data?<br><br>
+          <div class="button-bar">
+              <button class="button button-assertive" ng-click="recusar()">Não</button>
+              <button class="button button-balanced" ng-click="aceitar()">Sim</button>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+</ion-view>

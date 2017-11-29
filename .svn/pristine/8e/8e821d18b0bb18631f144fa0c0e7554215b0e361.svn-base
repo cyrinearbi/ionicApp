@@ -1,0 +1,25 @@
+<ion-view title="Faça seu cadastro">
+    <ion-content padding="true" class="has-header">
+        <form id="form-cadastro" name="form" class="list" ng-submit="cadastrar(form.$valid)" novalidate>
+            <ion-list>
+                <label class="item item-input" ng-class="{'input-invalid':submitted && form.sus.$invalid && !form.sus.$pristine}">
+                    <i class="icon ion-card placeholder-icon"></i>
+                    <input type="text" name="sus" sus ng-model="campos.sus" placeholder="Número do cartão SUS" required>
+                </label>
+                <div class="item item-divider" ng-show="submitted && form.sus.$invalid && !form.sus.$pristine">Número de cartão inválido</div>
+                <label class="item item-input" ng-class="{'input-invalid':submitted && form.senha.$invalid && !form.senha.$pristine}">
+                    <i class="icon ion-key placeholder-icon"></i>
+                    <input type="password" name="senha" senha ng-model="campos.senha" ng-minlength="6" placeholder="Senha" required>
+                </label>
+                <div class="item item-divider" ng-show="submitted && form.senha.$error.minlength">No mínimo 6 caracteres</div>
+                <label class="item item-input" ng-class="{'input-invalid':submitted && form.senha2.$invalid && !form.senha2.$pristine}">
+                    <i class="icon ion-key placeholder-icon"></i>
+                    <input type="password" name="senha2" senha2 ng-model="campos.senha2" placeholder="Repita a senha" required>
+                </label>
+                <div class="item item-divider" ng-show="submitted && form.senha2.$error.desigual">As senhas não conferem</div>
+            </ion-list>
+            <button class="button button-balanced button-block icon ion-arrow-right-a">Cadastrar</button>
+            <a ui-sref="login" class="button button-stable button-block">Cancelar</a>
+        </form>
+    </ion-content>
+</ion-view>

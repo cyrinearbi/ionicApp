@@ -1,0 +1,24 @@
+<ion-view title="Medicamentos" id="medicamentos">
+    <ion-content padding="true" class="has-header">
+      <div class="list">
+        <div class="item item-text-wrap" ng-repeat="med in medicamentos">
+          
+          <h2><img ng-src="{{$root.server}}WebSocialComum/imgs/medicamentos/{{med.cod}}.jpg">{{med.nome}}</h2>
+          <div class="row">
+            <div class="col"><b>Quantidade</b><br>{{med.quantidade}}</div>
+            <div class="col"><b>Validade</b><br>{{med.validade}}</div>
+          </div>
+          <div class="row">
+            <div class="col"><b>Retirada</b><br>{{med.data}}</div>
+            <div class="col"><b>Lote</b><br>{{med.lote}}</div>
+          </div>
+          <p><b>Médico: </b>{{med.medico}}</p>
+          <!-- <p><b>Validade: </b>{{med.validade}}</p>
+          <p><b>Retirada: </b>{{med.data}}</p>
+          <p><b>Lote: </b>{{med.lote}}</p>
+           -->
+        </div>
+      </div>
+      <div ng-if="medicamentos.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você ainda não retirou nenhum medicamento.</div></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,10 @@
+<ion-view title="Meus atestados" id="atestados">
+    <ion-content padding="true" class="has-header">
+      <div class="list">
+        <a ng-repeat="atestado in atestados" ui-sref="detalhesAtestado({id:atestado.atest_codigo})" class="item item-button-right" >{{atestado.ate_data}}
+          <button class="button button-positive ion-arrow-right-b"></button>
+        </a>
+      </div>
+      <div ng-if="atestados.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você não possui nenhum atestado.</div></div>
+    </ion-content>
+</ion-view>

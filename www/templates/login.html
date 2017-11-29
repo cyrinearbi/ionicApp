@@ -1,0 +1,21 @@
+<ion-view title="Entrar">
+    <ion-content padding="true" class="has-header">
+        <button class="button button-block button-positive icon ion-social-facebook" ng-click="fbLogin()">Entrar com Facebook</button>
+        <div class="spacer" style="height: 40px;"></div>
+        <form id="login-form2" class="list" name="form" ng-submit="login(form.$valid)" novalidate>
+            <ion-list>
+                <label class="item item-input" ng-class="{'input-invalid':submitted && form.sus.$invalid}">
+                    <i class="icon ion-card placeholder-icon"></i>
+                    <input type="text" name="sus" ng-model="campos.sus" placeholder="Cartão SUS" ng-required="true">
+                </label>
+                <label class="item item-input" ng-class="{'input-invalid':submitted && form.senha.$invalid}">
+                    <i class="icon ion-key placeholder-icon"></i>
+                    <input type="password" name="senha" ng-model="campos.senha" placeholder="Senha" ng-required='true'>
+                </label>
+            </ion-list>
+            <button class="button button-balanced button-block icon ion-arrow-right-a">Entrar</button>
+        </form>
+        <div class="spacer" style="height: 10px;"></div>
+        <a ui-sref="cadastro({voltar:true})" class="button button-dark button-block icon ion-person-add">Quero me cadastrar!</a>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view title="Economias em saúde" id="economia">
+    <ion-content padding="true" class="has-header">
+    <div class="card">
+            <div class="item item-text-wrap assertive"><i class="icon ion-alert-circled"></i> Estes valores são aproximados dos valores reais.</div>
+        </div>
+      <div class="list">
+        <div class="item item-icon-left">
+          <i class="icon ico-pill"></i>
+          Medicamentos<br>
+          <big class="positive">R$ {{relatorio.medicamentos}}</big>
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ico-heart-line"></i>
+          Exames<br>
+          <big class="balanced">R$ {{relatorio.exames}}</big>
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ico-calendar-check"></i>
+          Consultas<br>
+          <big class="royal">R$ {{relatorio.consultas}}</big>
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-social-usd"></i>
+          Total<br>
+          <big class="assertive">R$ {{relatorio.total}}</big>
+      </div>
+    </ion-content>
+</ion-view>

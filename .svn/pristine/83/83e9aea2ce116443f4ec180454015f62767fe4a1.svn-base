@@ -1,0 +1,34 @@
+<ion-view title="Consultas" id="consultas">
+    <ion-content padding="true" class="has-header">
+      <div class="card consulta" ng-repeat="consulta in consultas">
+        <div class="item item-divider">{{consulta.ate_data}}</div>
+        <div class="item item-text-wrap">
+          <h2>{{consulta.usr_nome}}</h2>
+          <p ng-bind-html="consulta.esp_nome"></p>
+        </div>
+        <div class="item item-text-wrap" ng-if="consulta.cd10_codigo_cid || consulta.ate_reclamacao.length > 0 || consulta.ate_diagnostico.length > 0 || consulta.ate_tratamento.lenght > 0 || consulta.ate_curativo.length > 0">
+          <p ng-if="consulta.ate_reclamacao.length > 0"><strong>Reclamação: </strong><span ng-bind-html="consulta.ate_reclamacao"></span></p>
+          <p ng-if="consulta.ate_diagnostivo.length > 0"><strong>Diagnóstico: </strong><span ng-bind-html="consulta.ate_diagnostivo"></span></p>
+          <p ng-if="consulta.ate_tratamento.length > 0"><strong>Tratamento: </strong><span ng-bind-html="consulta.ate_tratamento"></span></p>
+          <p ng-if="consulta.ate_curativo.length > 0"><strong>Curativo: </strong><span ng-bind-html="consulta.ate_curativo"></span></p>
+          <p ng-if="consulta.cd10_codigo_cid"><b>CID: </b><span ng-bind-html="consulta.cd10_descricao"></span></p>
+        </div>
+        <div class="item item-text-wrap">
+          <div class="row">
+            <div class="col">Peso</div>
+            <div class="col">Alt.</div>
+            <div class="col">P/A</div>
+            <div class="col">IMC</div>
+          </div>
+          <div class="row valor">
+            <div class="col">{{consulta.pc_peso || '--'}}</div>
+            <div class="col">{{consulta.pc_altura || '--'}}</div>
+            <div class="col">{{consulta.pc_pressao_sistolica || '--'}}/{{consulta.pc_pressao_diastolica || '--'}}</div>
+            <div class="col">{{consulta.imc || '--'}}</div>
+          </div>
+        </div>
+        <div class="item item-divider item-text-wrap"><small>{{consulta.uni_desc}}</small></div>
+      </div>
+      <div ng-if="consultas.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você ainda não realizou nenhuma consulta.</div></div>
+    </ion-content>
+</ion-view>

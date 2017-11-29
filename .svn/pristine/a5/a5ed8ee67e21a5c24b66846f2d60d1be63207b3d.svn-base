@@ -1,0 +1,17 @@
+<ion-view title="Cartão SUS">
+    <ion-content padding="true" class="has-header">
+        <div class="card">
+            <div class="item item-text-wrap assertive"><i class="icon ion-alert-circled"></i> Para utilizar o aplicativo, é necessário o número do cartão SUS.</div>
+        </div>
+        <form id="form-cartao-sus" name="form" class="list" ng-submit="cartaoSus(form.$valid)" novalidate>
+            <ion-list>
+                <label class="item item-input" ng-class="{'input-invalid':submitted && form.sus.$invalid && !form.sus.$pristine}">
+                    <i class="icon ion-card placeholder-icon"></i>
+                    <input type="text" name="sus" sus ng-model="campos.sus" placeholder="Número do cartão SUS" required>
+                </label>
+                <div class="item item-divider" ng-show="submitted && form.sus.$invalid && !form.sus.$pristine">Número de cartão inválido</div>
+            </ion-list>
+            <button class="button button-balanced button-block icon ion-checkmark">Cadastrar</button>
+        </form>
+    </ion-content>
+</ion-view>

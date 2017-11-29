@@ -1,0 +1,17 @@
+<ion-view title="Agendar consulta" id="agendar-consulta">
+    <ion-content padding="true" class="has-header">
+    <div class="card"><div class="item item-text-wrap"><i class="icon ion-information-circled"></i> Escolha uma especialidade.</div></div>
+        <ion-list>
+          <!--<label class="item item-input item-stacked-label" ng-class="{'input-invalid':submitted && form.data_de.$invalid}">
+            <span class="input-label">Data de</span>
+            <input type="date" name="data_de" ng-model="campos.data_de" placeholder="dd/mm/YYYY" required>
+          </label>
+          <div class="item item-text-wrap item-divider" ng-show="submitted && form.data_de.$invalid">Informe uma data</div>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Data até</span>
+            <input type="date" name="data-ate" ng-model="campos.data_ate" placeholder="dd/mm/YYYY">
+          </label>-->
+          <ion-item ui-sref="diasAgendarConsulta({id:id})" ng-repeat="(id, esp) in especialidades" class="item-text-wrap"><i class="icon ico-{{esp.icon}}" required></i> {{esp.nome}}</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

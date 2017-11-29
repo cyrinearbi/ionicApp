@@ -1,0 +1,31 @@
+<ion-view title="Meus dados" id="meus-dados">
+    <ion-content padding="true" class="has-header">
+      <form id="form-meus-dados" name="form" class="list" ng-submit="salvar(form.$valid)" novalidate>
+        <ion-list>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Nome</span>
+            <input type="text" name="nome" ng-model="campos.uapp_nome" placeholder="Nome" readonly>
+          </label>
+          <div class="item item-divider" ng-show="submitted && form.nome.$invalid && !form.nome.$pristine">Digite seu nome</div>
+          <label class="item item-input item-stacked-label" ng-class="{'input-invalid':submitted && form.email.$invalid && !form.email.$pristine}">
+            <span class="input-label">E-mail</span>
+            <input type="email" name="email" email ng-model="campos.uapp_email" placeholder="E-mail">
+          </label>
+          <div class="item item-divider" ng-show="submitted && form.email.$invalid && !form.email.$pristine">Digite um e-mail válido</div>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Ocupação</span>
+            <input type="text" ng-model="campos.uapp_ocupacao" placeholder="Ocupação">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Telefone</span>
+            <input type="text" ng-model="campos.uapp_fone" placeholder="Telefone" mask="(99) 9?9999-9999">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Celular</span>
+            <input type="text" ng-model="campos.uapp_celular" placeholder="Celular" mask="(99) 9?9999-9999">
+          </label>
+        <button class="button button-balanced button-block icon ion-checkmark">Salvar</button>
+        </ion-list>
+      </form>
+    </ion-content>
+</ion-view>

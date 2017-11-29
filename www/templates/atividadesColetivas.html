@@ -1,0 +1,23 @@
+<ion-view title="Atividades Coletivas" id="atividades">
+    <ion-content padding="true" class="has-header">
+      <div class="row timeline" ng-repeat="atv in atividades">
+        <div class="data col-20">
+          <div class="dia">{{atv.dia}}</div>
+          <div class="mes">{{atv.mes}}</div>
+        </div>
+        <div class="col-80">
+          <div class="card">
+            <div class="item item-divider item-text-wrap" ng-bind-html="atv.no_cds_tipo_ativ_col"></div>
+            <div class="item item-text-wrap">
+              <div class="row">
+                <div class="col"><span class="atividade-tempo">Inicio</span><br>{{atv.hr_inicio}}</div>
+                <div class="col"><span class="atividade-tempo">Fim</span><br>{{atv.hr_fim}}</div>
+              </div>
+              <p><i class="ion-person"></i> {{atv.usr_nome}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if="agendamentos.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você não possui nenhum agendamento.</div></div>
+    </ion-content>
+</ion-view>

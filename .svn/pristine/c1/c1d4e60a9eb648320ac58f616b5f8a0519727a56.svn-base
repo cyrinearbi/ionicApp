@@ -1,0 +1,17 @@
+<ion-view title="Procedimentos" id="procedimentos">
+    <ion-content padding="true" class="has-header">
+      <div class="card procedimento" ng-repeat="proc in procedimentos">
+        <div class="item item-divider item-text-wrap"><h2 ng-bind-html="proc.proc_nome"></h2></div>
+        <div class="item item-text-wrap">
+          <h2>{{proc.usr_nome}}</h2>
+          <p ng-bind-html="proc.esp_nome"></p>
+        </div>
+        <div class="item item-text-wrap" ng-if="proc.cd10_descricao.length > 0 || proc.ate_diagnostico.length > 0">
+          <p ng-if="proc.cd10_descricao.length > 0"><strong>CID: </strong><span ng-bind-html="proc.cd10_descricao"></span></p>
+          <p ng-if="proc.ate_diagnostivo.length > 0"><strong>Diagnóstico: </strong><span ng-bind-html="proc.ate_diagnostivo"></span></p>
+        </div>
+        <div class="item item-divider item-text-wrap"><small>{{proc.age_data}}</small></div>
+      </div>
+      <div ng-if="procedimentos.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você ainda não possui nenhum procedimento.</div></div>
+    </ion-content>
+</ion-view>

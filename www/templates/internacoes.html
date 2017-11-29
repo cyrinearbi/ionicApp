@@ -1,0 +1,20 @@
+<ion-view title="Internações" id="interncoes">
+    <ion-content padding="true" class="has-header">
+      <div class="card" ng-repeat="i in internacoes">
+        <div class="item item-divider"><strong>{{i.io_status}}</strong><br><small>{{i.io_data_cadastro}}</small><span class="badge" ng-class="'badge-'+i.classe">{{i.status}}</span></div>
+        <div class="item item-text-wrap">
+          <h2>{{i.usr_nome}}</h2>
+        </div>
+        <div class="item item-text-wrap" ng-if="i.io_observacao.length > 0">
+          <p ng-if="i.io_observacao.length > 0"><strong>Observações: </strong><span ng-bind-html="i.io_observacao"></span></p>
+        </div>
+        <div class="item item-divider" ng-if="i.io_data_alta.length > 0">Alta em: <strong ng-if="i.io_data_alta.length > 0">{{i.io_data_alta}}</strong></div>
+        <div class="item item-text-wrap" ng-if="i.io_observacao_alta.length > 0 || i.usr_alta">
+          <p ng-if="i.io_observacao_alta.length > 0"><span ng-bind-html="i.io_observacao_alta"></span></p>
+          <p ng-if="i.usr_alta.length > 0">Por: <strong>{{i.usr_alta}}</strong></p>
+        </div>
+        <div class="item item-divider item-text-wrap"><small>{{i.uni_desc}}</small></div>
+      </div>
+      <div ng-if="internacoes.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você ainda não realizou nenhuma i.</div></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,22 @@
+<ion-view title="Vacinas" id="vacinas">
+    <ion-content padding="true" class="has-header">
+      <div class="card" ng-repeat="v in vacinas">
+        <div class="item item-divider">{{v.pro_nome}}</div>
+        <div class="item item-text-wrap">
+          <div class="row vacina">
+            <div class="col" ng-repeat="i in [1,2,3,4,5]">
+              <div>{{v['dose_'+i] == 'S' ? i+'&ordf;' : ''}}</div>
+              <div ng-if="v['dose_'+i] == 'S' && v.itens[(i-1)].dose == i" ui-sref="detalhesVacina({id:v.itens[(i-1)].id})">
+                <span class="dia">{{v.itens[(i-1)].dia}}</span>
+                <span class="mes">{{v.itens[(i-1)].mes}}</span>
+                <span class="ano">{{v.itens[(i-1)].ano}}</span>
+                <span class="badge" ng-class="v.itens[(i-1)].classe">{{v.itens[(i-1)].acao}}</span>
+              </div>
+              <div ng-if="v['dose_'+i] == 'S' && (!v.itens[(i-1)] || v.itens[(i-1)].dose != i)"><span class="dia">--</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="item item-divider" ng-if="v.reforco == 'S' && v.itens[0].dose == 6">REFORÇO: {{v.itens[0].data}}</div>
+      </div>
+    </ion-content>
+</ion-view>

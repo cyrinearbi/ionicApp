@@ -1,0 +1,9 @@
+<ion-view title="Inicial">
+    <ion-content padding="true" class="has-header">
+      <div class="card">
+        <div class="item item-divider">Seja bem-vindo(a)</div>
+        <div class="item item-text-wrap">
+          Utilize o menu lateral para acessar o conteúdo do aplicativo.
+        </div>
+    </ion-content>
+</ion-view>

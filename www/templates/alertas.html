@@ -1,0 +1,10 @@
+<ion-view title="Alertas" id="alertas">
+    <ion-content padding="true" class="has-header">
+      <div class="card" ng-repeat="alerta in alertas">
+        <div class="item item-divider"><strong>Alerta {{alerta.ale_data}}</strong></div>
+        <div class="item item-text-wrap">{{alerta.ale_desc}}</div>
+        <div class="item item-divider item-text-wrap"><small>{{alerta.usr_nome}}</small></div>
+      </div>
+      <div ng-if="alertas.length == 0" class="card"><div class="item item-text-wrap"><i class="icon ion-android-alert"></i> Você não possui nenhum alerta.</div></div>
+    </ion-content>
+</ion-view>
